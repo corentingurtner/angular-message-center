@@ -149,9 +149,13 @@ directive('messageCenter', ['$timeout', 'MessageService', function ($timeout, Me
         var nextMsg = q.shift();
 
         //Force the ng-repeat to update the bindings whatever the situation
-        scope.$apply(function (){
+        if (!$rootScope.$$phase){
+          scope.$apply(function (){
+            list.push(nextMsg);
+          });
+        } else{
           list.push(nextMsg);
-        });
+        }
 
         $timeout(function() {
           remove(list, nextMsg);
