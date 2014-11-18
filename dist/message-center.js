@@ -107,7 +107,7 @@ factory('MessageService', ['$rootScope', function ($rootScope) {
 
   return MessageService;
 }]).
-directive('messageCenter', ['$timeout', 'MessageService', function ($timeout, MessageService) {
+directive('messageCenter', ['$timeout', 'MessageService', '$rootScope', function ($timeout, MessageService, $rootScope) {
   return {
     restrict: 'E',
     scope: {},
